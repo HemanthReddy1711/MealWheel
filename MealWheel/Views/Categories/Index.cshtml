@@ -1,0 +1,48 @@
+﻿@using MealWheel
+@model IEnumerable<MealWheel.Models.category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2 style="color:#6f42c1"> 
+            Category's List
+        </h2>
+    </div>
+     <div class="col-6 text-end">
+        <a asp-action="Create" class="btn" style="background-color:#6f42c1;color:white"> &nbsp; Add category</a>
+    </div>
+
+    <br />
+    <br />
+    <div class="col-lg-12 col-md-6">
+      <table class=" container table table-striped">
+      <tr>
+        <th>
+            @Html.DisplayNameFor(c => c.name)
+        </th>
+        
+        <th></th>
+      </tr>
+      @foreach(var item in Model)
+      {
+      <tr>
+          <td>
+              @item.name
+          </td>
+         
+          <td>
+       <div class="btn-group" role="group">
+  <a asp-action="Edit" asp-controller="Categories" class="btn btn-success" asp-route-id="@item.id" > Edit  </a>
+  <a class="btn btn-warning" asp-action="Details" asp-controller="Categories" asp-route-id="@item.id">Details</a>
+  <a class="btn btn-danger" asp-action="Delete" asp-controller="Categories" asp-route-id="@item.id"> Delete </a>
+</div>
+</td>
+</tr>
+      }
+      </table>
+      </div>
+    </div>
+
+

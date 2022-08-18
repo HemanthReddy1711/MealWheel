@@ -1,0 +1,118 @@
+﻿@using MealWheel
+@model MealWheel.Models.Food_Products
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Edit A Edit
+    </h2>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <div class="col-8">
+
+             <div class="form-group row">
+            <div class=",col-2">
+                <label asp-for="category.name"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="cid" class ="form-control" asp-items="ViewBag.savecat"></select>
+               
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+             </div>
+            <span asp-validation-for="category.name" class="text-danger"></span>
+            </div>
+               
+
+             <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" id="validationCustom05" required/>
+            </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+             <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Price" class="form-control" id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+             <div class="col-2">
+                <label asp-for="description"></label>
+            </div>
+          
+            <div class="col-5">
+                <input asp-for="description" class="form-control" id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="description" class="text-danger"></span>
+            <input type="hidden" asp-for="picurl" hidden/>
+            </div>
+
+             
+
+
+            <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="address_res"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="address_res" class="form-control" id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="address_res" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="pic"> </label>
+            </div>
+            <div class="col-5">
+                <input asp-for="pic" class="form-control" type="file">
+            </div>
+            <span asp-validation-for="pic" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+             <div class="col-2">
+                <label asp-for="Avail"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Avail" type="checkbox"/>
+            </div>
+            <span asp-validation-for="Avail" class="text-danger"></span>
+        </div>
+
+      
+        
+
+        <div class="form-group">
+            <input class="btn btn-primary" value="Update" type="submit"/>
+            <a asp-action="Index" class="btn btn-success"> Back to List</a>
+        </div>
+        </div>
+         <div class="col-1">
+
+        </div>
+         <div class="col-3">
+             <img src="~/@Model.picurl" width="100%"/>
+        </div>
+       @* <input asp-for="cid" type="hidden" hidden/>
+*@
+       
+    </div>
+</form>
+</div>
+
