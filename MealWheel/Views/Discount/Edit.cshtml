@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using MealWheel
+@model MealWheel.Models.discount
 @{
+    ViewData["Title"] = "Edit";
 }
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Edit Discount
+    </h2>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            <div class=",col-2">
+                <label asp-for="name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="name" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="name" class="text-danger"></span>
+             <div class=",col-2">
+                <label asp-for="description"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="description" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="description" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input class="btn btn-primary" value="save" type="submit"/>
+            <a asp-action="Index" asp-controller="Medicine" class="btn btn-success"> Back to List</a>
+        </div>
+    </div>
+</form>
+</div>
+

@@ -14,7 +14,7 @@ namespace MealWheel.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(MealDbContext.discounts.ToList());
         }
 
         public IActionResult Create()
@@ -23,25 +23,25 @@ namespace MealWheel.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(discount med)
+        public IActionResult Create(discount discount)
         {
 
-            MealDbContext.Add(med);
+            MealDbContext.Add(discount);
             MealDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int? id)
         {
-            var med = MealDbContext.discounts.FirstOrDefault(e => e.id == id);
-            return View(med);
+            var discount = MealDbContext.discounts.FirstOrDefault(e => e.id == id);
+            return View(discount);
         }
 
         [HttpPost]
-        public IActionResult Edit(discount med)
+        public IActionResult Edit(discount discount)
         {
 
-            MealDbContext.Update(med);
+            MealDbContext.Update(discount);
             MealDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
@@ -56,9 +56,9 @@ namespace MealWheel.Controllers
             return View(MealDbContext.discounts.FirstOrDefault(e => e.id == id));
         }
         [HttpPost]
-        public IActionResult Delete(discount med)
+        public IActionResult Delete(discount discount)
         {
-            MealDbContext.Remove(med);
+            MealDbContext.Remove(discount);
             MealDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
