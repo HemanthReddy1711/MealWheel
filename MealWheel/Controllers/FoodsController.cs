@@ -63,7 +63,7 @@ namespace MealWheel.Controllers
         }
         public IActionResult Delete(int? id)
         {
-            return View(mealDbContext.Food_Products.FirstOrDefault(e => e.Id == id));
+            return View(mealDbContext.Food_Products.Include(e => e.category).FirstOrDefault(e => e.Id == id));
         }
         [HttpPost]
         public IActionResult Delete(Food_Products food)
