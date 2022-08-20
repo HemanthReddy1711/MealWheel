@@ -1,0 +1,80 @@
+﻿@using MealWheel
+@model MealWheel.Models.Address
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Address Details
+    </h2>
+    <form asp-action="Details" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <div class="col-8">
+             <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="Door_no"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Door_no" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+            </div>
+            <div class="form-group row">
+            <span asp-validation-for="Door_no" class="text-danger"></span>
+            <br />
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="Area"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Area" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+            </div>
+            <div class="form-group row">
+            <span asp-validation-for="Area" class="text-danger"></span>
+            <br />
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="Landmark"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Landmark" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+            </div>
+            <div class="form-group row">
+            <span asp-validation-for="Landmark" class="text-danger"></span>
+            <br />
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="FullAddress"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="FullAddress" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+            </div>
+            <div class="form-group row">
+            <span asp-validation-for="FullAddress" class="text-danger"></span>
+            <br />
+             
+            
+            
+        </div>
+        <div class="form-group">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.id"> Edit </a>
+            <a asp-action="Index" class="btn btn-success"> Back to List</a>
+        </div>
+        </div>
+         <div class="col-1">
+
+        </div>
+        
+
+       
+    </div>
+</form>
+</div>

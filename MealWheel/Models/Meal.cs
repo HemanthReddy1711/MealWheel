@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MealWheel.Models
@@ -19,6 +20,7 @@ namespace MealWheel.Models
         public int Price { get; set; }
 
         [ForeignKey("category")]
+        [DisplayName("category Name")]
         public int cid { get; set; }
 
         public category category { get; set; }

@@ -1,0 +1,111 @@
+﻿@using MealWheel
+@model MealWheel.Models.Food_Products
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Edit A Food
+    </h2>
+    <form asp-action="Delete" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <div class="col-8">
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="category.name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="category.name" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+                   <span asp-validation-for="category.name" class="text-danger"></span>
+            <br />
+             </div>
+
+             <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Name" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+                   <span asp-validation-for="Name" class="text-danger"></span>
+            <br />
+             </div>
+            
+            <div class="form-group row">
+             <div class="col-6">
+                <label asp-for="description"></label>
+            </div>
+            <input asp-for = "picurl" readonly="readonly" type="hidden"/>
+            <div class="col-6">
+                <input asp-for="description" readonly="readonly" class="form-control"  id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="description" class="text-danger"></span>
+            <br />
+            </div>
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="Price"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Price" readonly="readonly" class="form-control"  id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+            <br />
+            </div>
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="address_res"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="address_res" readonly="readonly" class="form-control"  id="validationCustom05" required/>
+            </div>
+            <span asp-validation-for="address_res" class="text-danger"></span>
+            <br />
+            </div>
+
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="pic"> </label>
+            </div>
+            <div class="col-6">
+                <input asp-for="pic" disabled readonly="readonly" class="form-control" type="file">
+            </div>
+            <span asp-validation-for="pic" class="text-danger"></span>
+            <br />
+            </div>
+            
+            <div class="form-group row">
+             <div class="col-6">
+                <label asp-for="Avail"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Avail"disabled readonly="readonly" type="checkbox"/>
+            </div>
+            <span asp-validation-for="Avail" class="text-danger"></span>
+            <br />
+        </div>
+        <div class="form-group">
+            <input class="btn btn-danger" value="Delete" type="submit"/>
+            <a asp-action="Index" class="btn btn-success"> Back to List</a>
+        </div>
+        </div>
+         <div class="col-1">
+
+        </div>
+         <div class="col-3">
+             <img src="~/@Model.picurl" width="100%"/>
+        </div>
+
+       
+    </div>
+</form>
+</div>
+
+

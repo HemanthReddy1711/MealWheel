@@ -1,0 +1,72 @@
+﻿@using MealWheel
+@model MealWheel.Models.feedback
+
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Add a Feedback
+    </h2>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+       <div class="form-group row">
+            <div class=",col-2">
+                <label asp-for="product.Name"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="pid" class ="form-control" asp-items="ViewBag.savecat"></select>
+               
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="product.Name" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="uname"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="uname" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="uname" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="review"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="review" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="review" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="rating"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="rating" class="form-control" id="validationCustom05" min="1" max="5" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="rating" class="text-danger"></span>
+            
+        </div>
+        <br />
+        <div class="form-group">
+            <input class="btn btn-primary" value="save" type="submit"/>
+            <a asp-action="Index" class="btn btn-success"> Back to List</a>
+        </div>
+    </div>
+</form>
+</div>
