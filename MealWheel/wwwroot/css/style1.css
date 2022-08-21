@@ -1,0 +1,345 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font: 400 14px/21px "Raleway",sans-serif;
+    line-height: 1.7;
+    padding: 30px;
+}
+
+.header1 {
+    height: 80vh;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #000;
+    /*clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);*/
+    /* clip-path: polygon(0 0, 100% 50%,100% 50%,0 100%); */
+}
+
+    .header1 .img-responsive {
+        width: 100%;
+        display: block;
+        height: 80vh;
+        border-radius: 20px;
+        opacity: 0.4;
+    }
+
+        .header1 .img-responsive:hover {
+            opacity: 0.9;
+        }
+
+    .header1:hover {
+        transform: translateY(-3px);
+    }
+
+.text-box {
+    bottom: 15%;
+    left: 7vw;
+    position: absolute;
+    text-align: center;
+}
+
+    .text-box h4 {
+        color: #fff;
+        font-weight: 400;
+        font-size: 10px;
+    }
+
+    .text-box p {
+        color: #fff;
+        font-weight: 400;
+        font-size: 10px;
+    }
+
+    .text-box h4 span {
+        color: #fd9148;
+    }
+
+h1:after {
+    content: '';
+    height: 0px;
+    display: block;
+    background: none;
+}
+
+.header1-heading {
+    color: #fff;
+    text-transform: none;
+}
+
+.header1-heading-large {
+    font-size: 20px;
+    letter-spacing: normal;
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0;
+    animation-name: toleft;
+    animation-duration: 2s;
+}
+
+.header1-heading-small {
+    font-size: 10px;
+    letter-spacing: normal;
+    font-weight: 400;
+    text-transform: lowercase;
+    display: block;
+    animation-name: toright;
+    animation-duration: 2s;
+    margin-bottom: 40px;
+}
+
+.s-desc {
+    position: absolute;
+    bottom: 10%;
+    left: 3vw;
+    text-transform: none;
+    text-align: center;
+}
+
+    .s-desc h2 {
+        text-align: center;
+        text-transform: lowercase;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    .s-desc h4 {
+        color: #fff;
+        font-size: 15px;
+    }
+
+        .s-desc h4 span {
+            color: #fd9148;
+        }
+
+    .s-desc p {
+        color: #fff;
+    }
+
+    .s-desc a {
+        text-align: center;
+        font-size:15px;
+    }
+
+.button1:link,
+.button1:visited {
+    text-decoration: none;
+    padding: 10px 40px;
+    text-align: center;
+    border-radius: 100px;
+    transition: all .2s;
+    background-color: #fd9148;
+    color: #ffffff;
+}
+
+.button1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    background-color: rgb(30, 28, 28);
+}
+
+.button1-anim {
+    animation-name: toup;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+}
+
+.button1-white {
+    background-color: #fff;
+    color: #777;
+}
+
+@keyframes toleft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes toup {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes toright {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.nav2 a {
+    display: inline;
+    color: #fd9148;
+}
+
+    .nav2 a:hover {
+        color: #000;
+    }
+
+.breadcrumb {
+    margin: 0 0 40px;
+    padding: 13px 15px;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 21px;
+    margin-right: 20px;
+    color:#000
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    border-radius: 4px;
+}
+.nav1 a {
+    display: inline;
+    color: #000;
+}
+
+    .nav1 a:hover {
+        color: #fd9148;
+    }
+
+.search {
+    padding: 0;
+}
+
+.search {
+    position: relative;
+    width: 100%;
+    padding: 0 133px 0 0;
+    float: right;
+}
+
+    .search input[type=text] {
+        padding: 0 45px 0 15px;
+    }
+
+    .search input[type=text] {
+        color: #292929;
+        display: block;
+        margin: 0;
+        font-size: 14px;
+        line-height: 18px;
+        text-transform: none;
+        font-weight: 400;
+        padding: 0 40px 0 20px;
+        width: 100%;
+        height: 40px;
+        background: #fff;
+        border: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .search button, .search button:focus, .search button:active {
+        background: 0 0;
+        border: none;
+        display: inline-block;
+        padding: 0;
+        outline: none;
+        outline-offset: 0;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        -webkit-transition: .3s all ease;
+        transition: .3s all ease;
+        position: absolute;
+        top: 0;
+        right: 146px;
+        background: 0 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 10px;
+        padding: 0;
+        color: #292929;
+        font: 400 12px/41px "FontAwesome";
+    }
+
+button, .btn {
+    background: 0 0;
+    border: none;
+    display: inline-block;
+    padding: 0;
+    outline: none;
+    outline-offset: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    -webkit-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+.navbar {
+    border-radius: 10px;
+}
+
+.nav-item {
+    color: #000;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+    .nav-item .linkk {
+        color: #000;
+        text-decoration:none;
+    }
+
+        .nav-item .linkk:hover {
+            color: #fd9148;
+        }
+
+.hel {
+    background-color: #a4a6a7;
+}
+.button-search span i{
+    color:#000;
+}
+.button-search span i:hover{
+    color: #fd9148;
+}
