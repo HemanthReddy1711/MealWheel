@@ -10,7 +10,7 @@ body {
 }
 
 .header1 {
-    height: 80vh;
+    height: 95vh;
     border-radius: 20px;
     position: relative;
     margin-bottom: 20px;
@@ -22,7 +22,7 @@ body {
     .header1 .img-responsive {
         width: 100%;
         display: block;
-        height: 80vh;
+        height: 95vh;
         border-radius: 20px;
         opacity: 0.4;
     }
@@ -94,7 +94,7 @@ h1:after {
 
 .s-desc {
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     left: 3vw;
     text-transform: none;
     text-align: center;
@@ -122,7 +122,7 @@ h1:after {
 
     .s-desc a {
         text-align: center;
-        font-size:15px;
+        font-size:20px;
     }
 
 .button1:link,
@@ -202,6 +202,15 @@ h1:after {
     }
 }
 
+.nav1 a {
+    display: inline;
+    color: #000;
+}
+
+    .nav1 a:hover {
+        color: #fd9148;
+    }
+
 .nav2 a {
     display: inline;
     color: #fd9148;
@@ -221,7 +230,6 @@ h1:after {
     font-size: 12px;
     line-height: 21px;
     margin-right: 20px;
-    color:#000
 }
 
 .breadcrumb {
@@ -230,14 +238,6 @@ h1:after {
     list-style: none;
     border-radius: 4px;
 }
-.nav1 a {
-    display: inline;
-    color: #000;
-}
-
-    .nav1 a:hover {
-        color: #fd9148;
-    }
 
 .search {
     padding: 0;
@@ -337,9 +337,47 @@ button, .btn {
 .hel {
     background-color: #a4a6a7;
 }
-.button-search span i{
-    color:#000;
+
+.title h4 {
+    font-style: bold;
+    font-weight: 700;
 }
-.button-search span i:hover{
-    color: #fd9148;
+
+.title h4:hover{
+    color:#fd9148;
 }
+
+.title p {
+    font-size: 12px;
+}
+
+.title h6 {
+    display: inline;
+    font-size:10px;
+}
+
+.title h5 {
+    display: inline;
+    font-size: 15px;
+}
+
+.title .nav2 a {
+    float: right;
+    bottom: 10px;
+}
+
+.proo {
+    background-color: #ffff;
+    height: 170px;
+    position: relative;
+}
+
+    .proo img {
+        position: absolute;
+        right: 23%;
+        top: 23%;
+    }
+    .proo img:hover{
+        opacity:0.1;
+    }
+
