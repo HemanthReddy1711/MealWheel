@@ -1,0 +1,71 @@
+﻿@using MealWheel
+@model MealWheel.Models.Address
+
+@{
+    ViewData["Title"] = "Address";
+}
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Add an Address
+    </h2>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            <div class=",col-2">
+                <label asp-for="Door_no"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Door_no" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Door_no" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="Area"></label>
+            </div>
+            <div class="col-5">
+                 <input asp-for="Area" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Area" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="Landmark"></label>
+            </div>
+            <div class="col-5">
+                 <input asp-for="Landmark" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Landmark" class="text-danger"></span>
+
+            <div class=",col-2">
+                <label asp-for="FullAddress"></label>
+            </div>
+            <div class="col-5">
+                 <input asp-for="FullAddress" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="FullAddress" class="text-danger"></span>
+            
+        </div>
+        <br />
+        <div class="form-group">
+            <input class="btn btn-primary" value="save" type="submit"/>
+            <a asp-action="Index" class="btn btn-success"> Back to List</a>
+        </div>
+    </div>
+</form>
+</div>
