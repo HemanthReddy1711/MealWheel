@@ -220,6 +220,10 @@ h1:after {
         color: #000;
     }
 
+.nav2 a i:hover{
+    color:#fd9148;
+}
+
 .breadcrumb {
     margin: 0 0 40px;
     padding: 13px 15px;
@@ -338,12 +342,18 @@ button, .btn {
     background-color: #a4a6a7;
 }
 
-.title h4 {
-    font-style: bold;
-    font-weight: 700;
+.title a {
+    color: #000;
+    text-decoration: none;
 }
 
-.title h4:hover{
+.title a h4 {
+    font-style: bold;
+    font-weight: 700;
+    font-size:15px;
+}
+
+.title a h4:hover{
     color:#fd9148;
 }
 
@@ -380,4 +390,14 @@ button, .btn {
     .proo img:hover{
         opacity:0.1;
     }
+.helloo {
+    align-items:end;
+}
+.helloo a{
+    color:#fd9148;
+}
+.helloo a:hover{
+    color:#000;
+}
+
 
