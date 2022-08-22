@@ -1,0 +1,78 @@
+﻿@using MealWheel
+@model MealWheel.Models.MyProfile
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <h2 style="color:mediumpurple">
+        Add a Profile
+    </h2>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+
+        <div class="form-group row">
+            
+             <div class=",col-2">
+                <label asp-for="Firstname"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Firstname" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Firstname" class="text-danger"></span>
+            <div class=",col-2">
+                <label asp-for="Lastname"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Lastname" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Lastname" class="text-danger"></span>
+            <div class=",col-2">
+                <label asp-for="Address"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Address" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="Address" class="text-danger"></span>
+            <div class=",col-2">
+                <label asp-for="MobileNumber"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="MobileNumber" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+            <div class=",col-2">
+                <label asp-for="profileImage"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="profileImage" class="form-control" id="validationCustom05" required/>
+                <div class="invalid-feedback">
+                    Please give input
+                </div>
+            </div>
+            <span asp-validation-for="profileImage" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input class="btn btn-primary" value="save" type="submit"/>
+            <a asp-action="Index" asp-controller="Myprofile" class="btn btn-success"> Back to List</a>
+        </div>
+    </div>
+</form>
+</div>
+

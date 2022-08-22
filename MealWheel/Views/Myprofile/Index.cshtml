@@ -1,0 +1,75 @@
+﻿@using MealWheel
+@model IEnumerable<MealWheel.Models.MyProfile>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2 style="color:#6f42c1"> 
+            My Profile
+        </h2>
+    </div>
+     <div class="col-6 text-end">
+        <a asp-action="Create" class="btn" style="background-color:#6f42c1;color:white"> &nbsp; Add a Profile</a>
+    </div>
+
+    <br />
+    <br />
+    <div class="col-lg-12 col-md-6">
+      <table class=" container table table-striped">
+      <tr>
+        <th>
+            @Html.DisplayNameFor(c => c.id)
+        </th>
+         <th>
+            @Html.DisplayNameFor(c => c.Firstname)
+        </th>
+         <th>
+            @Html.DisplayNameFor(c => c.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(c => c.profileImage)
+        </th>
+        <th></th>
+      </tr>
+      @foreach(var item in Model)
+      {
+      <tr>
+          <td>
+              @item.id
+          </td>
+          <td>
+              @item.Firstname
+          </td>
+          <td>
+              @item.Lastname
+          </td>
+          <td>
+              @item.Address
+          </td>
+          <td>
+              @item.MobileNumber
+          </td>
+          <td>
+              @item.profileImage
+          </td>
+          <td>
+       <div class="btn-group" role="group">
+  <a asp-action="Edit" asp-controller="Myprofile" class="btn btn-success" asp-route-id="@item.id" > Edit  </a>
+  <a class="btn btn-warning" asp-action="Details" asp-controller="Myprofile" asp-route-id="@item.id">Details</a>
+  <a class="btn btn-danger" asp-action="Delete" asp-controller="Myprofile" asp-route-id="@item.id"> Delete </a>
+</div>
+</td>
+</tr>
+      }
+      </table>
+      </div>
+    </div>
+
