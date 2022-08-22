@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using MealWheel.Models;
 
 namespace MealWheel.Areas.Identity.Pages.Account
 {
@@ -32,6 +33,7 @@ namespace MealWheel.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         public IHostingEnvironment _env;
+        public MealDbContext _meal;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -39,7 +41,8 @@ namespace MealWheel.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IHostingEnvironment env)
+            IHostingEnvironment env,
+            MealDbContext meal)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -48,6 +51,7 @@ namespace MealWheel.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _env = env;
+            _meal = meal;
         }
 
         /// <summary>
@@ -150,12 +154,19 @@ namespace MealWheel.Areas.Identity.Pages.Account
                 user.Lastname = Input.LastName;
                 user.Address  = Input.Address;
                 user.MobileNumber = Input.MobileNumber;
+                MyProfile p = new MyProfile();
+                p.Firstname = Input.FirstName;
+                p.Lastname = Input.LastName;
+                p.Address = Input.Address.ToString();
+                p.MobileNumber = Input.MobileNumber;
+
 
                 if (Input.profileimage != null)
                 {
                     var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(Input.profileimage.FileName));
                     Input.profileimage.CopyTo(new FileStream(nam, FileMode.Create));
                     user.profileurl = "Images/" + Input.profileimage.FileName;
+                    p.profileurl = "Images/" + Input.profileimage.FileName;
                 }
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
