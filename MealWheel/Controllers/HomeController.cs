@@ -15,6 +15,7 @@ namespace MealWheel.Controllers
         private readonly ILogger<HomeController> _logger;
         public MealDbContext _meal;
         public UserManager<ApplicationUser> UserManager;
+        public SignInManager<ApplicationUser> SignInManager;
 
         public HomeController(ILogger<HomeController> logger, MealDbContext meal)
         {
@@ -24,6 +25,14 @@ namespace MealWheel.Controllers
 
         public IActionResult Index(int? i)
         {
+
+            bool val = HttpContext.User.Identity.IsAuthenticated;
+            if (val)
+            {
+                string us = HttpContext.User.Identity.Name.ToString();
+                string co = _meal.carts.Where(e=>e.uname==us).Count().ToString();
+                ViewData["hello"] = co;
+            }
             return View(_meal.Food_Products.ToList());
         }
 
@@ -34,12 +43,13 @@ namespace MealWheel.Controllers
         [HttpPost]
         public IActionResult Details(Food_Products p)
         {
-            Food_Products products = p;
             Cart cart = new Cart();
             cart.pid = p.Id;
-            cart.uname = UserManager.GetUserName(User);
+            cart.uname = HttpContext.User.Identity.Name.ToString();
             cart.totalPrice = p.quantity * p.Price;
-            return View();
+            _meal.carts.Add(cart);
+            _meal.SaveChanges();
+            return RedirectToAction(nameof(cart));
         }
 
         public IActionResult cart()
@@ -48,6 +58,13 @@ namespace MealWheel.Controllers
             var cati = _meal.carts.Include(c => c.product).Where(p => p.uname == us).ToList();
             ViewData["hello"] = _meal.carts.Where(p => p.uname == us).Sum(c => c.totalPrice).ToString();
             return View(cati);
+        }
+        public IActionResult Remove_cart(int? id)
+        {
+            var cartss = _meal.carts.FirstOrDefault(c => c.id == id);
+            _meal.Remove(cartss);
+            _meal.SaveChanges();
+            return RedirectToAction(nameof(Cart));
         }
         public IActionResult payment(int? id)
         {
