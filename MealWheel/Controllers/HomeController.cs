@@ -1,4 +1,6 @@
-﻿using MealWheel.Models;
+﻿using MealWheel.Areas.Identity.Data;
+using MealWheel.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Razorpay.Api;
@@ -12,6 +14,7 @@ namespace MealWheel.Controllers
         public const string raz_secret = "3QaoZiwflNJbQftFonT55elT";
         private readonly ILogger<HomeController> _logger;
         public MealDbContext _meal;
+        public UserManager<ApplicationUser> UserManager;
 
         public HomeController(ILogger<HomeController> logger, MealDbContext meal)
         {
@@ -19,7 +22,7 @@ namespace MealWheel.Controllers
             _meal = meal;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? i)
         {
             return View(_meal.Food_Products.ToList());
         }
@@ -28,8 +31,24 @@ namespace MealWheel.Controllers
         {
             return View(_meal.Food_Products.ToList().FirstOrDefault(e=>e.Id==id));
         }
+        [HttpPost]
+        public IActionResult Details(Food_Products p)
+        {
+            Food_Products products = p;
+            Cart cart = new Cart();
+            cart.pid = p.Id;
+            cart.uname = UserManager.GetUserName(User);
+            cart.totalPrice = p.quantity * p.Price;
+            return View();
+        }
 
-
+        public IActionResult cart()
+        {
+            string us = HttpContext.User.Identity.Name.ToString();
+            var cati = _meal.carts.Include(c => c.product).Where(p => p.uname == us).ToList();
+            ViewData["hello"] = _meal.carts.Where(p => p.uname == us).Sum(c => c.totalPrice).ToString();
+            return View(cati);
+        }
         public IActionResult payment(int? id)
         {
             var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);

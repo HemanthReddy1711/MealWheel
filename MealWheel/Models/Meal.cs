@@ -54,6 +54,8 @@ namespace MealWheel.Models
 
         public Food_Products product { get; set; }
 
+        public string uname { get; set; }
+
     }
 
     public class discount
@@ -84,6 +86,8 @@ namespace MealWheel.Models
         public int bid { get; set; }
         public Billing bill { get; set; }
 
+        public string uname { get; set; }
+
     }
 
     public class Cart
@@ -94,6 +98,8 @@ namespace MealWheel.Models
 
         public Food_Products product { get; set; }
         public int totalPrice { get; set; }
+
+        public string uname { get; set; }
     }
 
     public class MyProfile
@@ -113,6 +119,8 @@ namespace MealWheel.Models
         public int id { get; set; }
         public string Door_no { get; set; }
         public string  Area { get; set; }
+
+        public string uname { get; set; }
 
         public string Landmark { get; set; }
         public string FullAddress { get; set; }

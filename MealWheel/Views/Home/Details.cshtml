@@ -21,14 +21,14 @@
                 <input type="hidden" asp-for="Price"/>
                 @Model.Name
             </p>
-            <input type="hidden"/>
+            <input type="hidden" asp-for="@Model.Id"/>
             <h1>
                 @Model.description
             </h1>
             <h3>
                Rs.@Model.Price /-
             </h3>
-            <select asp-for="Id">
+            <select asp-for="quantity">
                 <option>
                     Qty
                 </option>
