@@ -92,6 +92,27 @@ h1:after {
     margin-bottom: 40px;
 }
 
+.header2 {
+    height: 200px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #000;
+}
+
+    .header2 .img-responsive {
+        width: 100%;
+        display: block;
+        height: 200px;
+        border-radius: 20px;
+        opacity: 0.4;
+        margin-top: 5px;
+    }
+
+        .header2 .img-responsive:hover {
+            opacity: 0.9;
+        }
+
 .s-desc {
     position: absolute;
     bottom: 15%;
@@ -124,6 +145,34 @@ h1:after {
         text-align: center;
         font-size:20px;
     }
+
+.s-desca {
+    position: absolute;
+    text-transform: none;
+    font-size: 20px;
+    bottom: 60%;
+    left: 87%;
+}
+
+/*.s-desca a i{
+    color:red;
+}*/
+
+.s-desat {
+    position: absolute;
+    text-transform: none;
+    font-size: 20px;
+    bottom: 20px;
+    color: #fff;
+    left: 10px;
+}
+
+.prof {
+    border: #000 solid 3px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-right:5px;
+}
 
 .button1:link,
 .button1:visited {
@@ -221,7 +270,7 @@ h1:after {
     }
 
 .nav2 a i:hover{
-    color:#fd9148;
+    color:#000;
 }
 
 .breadcrumb {
@@ -339,7 +388,7 @@ button, .btn {
         }
 
 .hel {
-    background-color: #a4a6a7;
+    background-color: #fd9148;
 }
 
 .title a {

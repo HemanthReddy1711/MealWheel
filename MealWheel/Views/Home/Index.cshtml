@@ -65,42 +65,56 @@
             <div class="row">
              @foreach(var item in Model)
              {
-            <div class="col-md-3 col-sm-4 produ">
-            <div class="img-con">
-              <div class="proo">
-                <center>
-              <img src="~/@item.picurl" alt="" width="100px" height="100px">
-              <a class="text-uppercase" asp-action="Details" asp-route-id="@item.Id">
-                    </a>
-            </center>
-            </div>
-            <div class="title">
-                <a class="text-uppercase" asp-action="Details" asp-route-id="@item.Id">
-                    <h4>
-                @item.Name
-                </h4>
-                    </a>
-              <p>
-                @item.description 
-              </p>
-              <div class="nav2 helloo">
-                <h6>
-                  Rs.@item.Price /-
-                </h6>
-                &nbsp;
-                &nbsp;
+                <div class="col-md-4 col-sm-4 prof">
+                    <div class="header2">
+                      <img src="~/@item.picurl" alt="" class="img-responsive">
 
-                <h5>
-                  
-                </h5>
-                <a href="#">
-                    <i class="fa fa-cart-plus"></i>
-                </a>
-            </div>
-            </div>
-          </div>
-        </div>
-        }
+                                  @if(@item.fav ==false)
+                                      {
+                                          <div class="s-desca header1-heading-small">
+                                         <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:white" onclick="Changeheart()"> <i class="fa-solid fa-heart"></i>
+                                            </a></div>
+                                      }
+                                   @if(item.fav==true)
+                                {
+                                    <div class="s-desca header1-heading-small">
+                                    <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:red" onclick="Changeheart()"> <i class="fa-solid fa-heart"></i>
+                                    </a></div>
+                                }
+
+                      <div class="title">
+                          <a asp-action="Details" asp-route-id="@item.Id">
+                        <h4>
+                          @item.Name
+                        </h4>
+                        </a>
+                        <p>
+                          @item.description
+                        </p>
+                        <div class="nav2">
+                          <h6>
+                            Rs.@item.Price
+                          </h6>
+                          <a href="#">
+                              <i class="fa fa-cart-plus"></i>
+                          </a>
+                      </div>
+                      </div>
+                      </div>
+                    </div>
+             }
+             <script>
+                 function Changeheart(){
+                     
+                     if(document.getElementById('cohe').style.color == "red")
+                     {
+                         alert("Item removed from whish list")
+                     }
+                     else{
+                         alert("Item Addded to whish list")
+                     }
+                 }
+             </script>
           <div class="col-md-3 col-sm-4 produ">
             <div class="img-con">
               <div class="proo">

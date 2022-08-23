@@ -33,6 +33,8 @@ namespace MealWheel.Models
         public IFormFile pic { get; set; }
 
         public string picurl { get; set; }
+
+        public bool fav { get; set; }
     }
 
     public class feedback

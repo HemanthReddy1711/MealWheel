@@ -36,6 +36,30 @@ namespace MealWheel.Controllers
             return View(_meal.Food_Products.ToList());
         }
 
+        public IActionResult add_fav(int id)
+        {
+            Food_Products f = _meal.Food_Products.ToList().FirstOrDefault(e => e.Id == id);
+            if(f.fav==true)
+            {
+                favorite fa = _meal.favorites.ToList().FirstOrDefault(e => e.pid == f.Id);
+                _meal.favorites.Remove(fa);
+                _meal.SaveChanges();
+                f.fav = false;
+            }
+            else
+            {
+                favorite fa = new favorite();
+                fa.uname = HttpContext.User.Identity.Name.ToString();
+                fa.product = f;
+                _meal.favorites.Add(fa);
+                _meal.SaveChanges();
+                f.fav = true;
+            }
+            _meal.Food_Products.Update(f);
+            _meal.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Details(int id)
         {
             return View(_meal.Food_Products.ToList().FirstOrDefault(e=>e.Id==id));
