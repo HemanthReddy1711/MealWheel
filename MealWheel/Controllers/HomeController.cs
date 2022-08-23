@@ -90,6 +90,13 @@ namespace MealWheel.Controllers
             _meal.SaveChanges();
             return RedirectToAction(nameof(Cart));
         }
+
+        public IActionResult Fav()
+        {
+            string us = HttpContext.User.Identity.Name.ToString();
+            var favr = _meal.favorites.Include(c => c.product).Where(p => p.uname == us).ToList();
+            return View(favr);
+        }
         public IActionResult payment(int? id)
         {
             var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
