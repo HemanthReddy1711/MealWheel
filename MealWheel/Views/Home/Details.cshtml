@@ -1,0 +1,49 @@
+﻿@using MealWheel
+@model MealWheel.Models.Food_Products
+@{
+    ViewData["Title"] = "Details";
+}
+
+<form asp-action="Details" method="post">
+<head>
+    <link rel="stylesheet" href="~/css/Home.css"/>
+</head>
+<h1>
+    Product Details
+</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img  src="~/@Model.picurl" height="50%"/>
+        </div>
+        <div class="col-4">
+            <p>
+                <input type="hidden" asp-for="Price"/>
+                @Model.Name
+            </p>
+            <input type="hidden" asp-for="@Model.Id"/>
+            <h1>
+                @Model.description
+            </h1>
+            <h3>
+               Rs.@Model.Price /-
+            </h3>
+            <select asp-for="quantity">
+                <option>
+                    1
+                </option>
+                @for(int i=2;i<10;i++)
+                {
+                   <option>
+                    @i
+                </option> 
+                }
+            </select>
+            <br />
+            <input class="btn" value="Add To Cart" type="submit"/>
+            <a asp-action="payment"  asp-route-id="@Model.Id" class="btn btn12" >Buy Now</a>
+        </div>
+    </div>
+</div>
+</form>
+

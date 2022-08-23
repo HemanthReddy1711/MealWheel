@@ -15,6 +15,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.web.CodeGeneration.Design" Version="6.0.8" />
+    <PackageReference Include="Razorpay" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
