@@ -1,5 +1,6 @@
 ﻿using MealWheel.Areas.Identity.Data;
 using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,7 @@ namespace MealWheel.Controllers
             return View(_meal.Food_Products.ToList());
         }
 
+        [Authorize]
         public IActionResult add_fav(int id)
         {
             Food_Products f = _meal.Food_Products.ToList().FirstOrDefault(e => e.Id == id);
