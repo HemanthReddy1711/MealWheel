@@ -30,15 +30,28 @@ namespace MealWheel.Controllers
             bool val = HttpContext.User.Identity.IsAuthenticated;
             if(search!=null)
             {
-                
+                if (val)
+                {
+                    string us = HttpContext.User.Identity.Name.ToString();
+                    string co = _meal.carts.Where(e => e.uname == us).Count().ToString();
+                    ViewData["hello"] = co;
+                    List<int> id = _meal.favorites.Where(e => e.uname == us).Select(e => e.pid).ToList();
+                    List<Food_Products> p = _meal.Food_Products.Where(e => e.Name.Contains(search)).ToList();
+                    foreach(Food_Products f in p)
+                    {
+                        
+                    }
+                }
                 return View(_meal.Food_Products.Where(e=>e.Name.Contains(search)));
             }
             if (val)
             {
                 string us = HttpContext.User.Identity.Name.ToString();
+
                 string co = _meal.carts.Where(e=>e.uname==us).Count().ToString();
                 ViewData["hello"] = co;
             }
+            
             return View(_meal.Food_Products.ToList());
         }
 
