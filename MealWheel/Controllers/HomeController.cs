@@ -1,5 +1,6 @@
 ﻿using MealWheel.Areas.Identity.Data;
 using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +24,15 @@ namespace MealWheel.Controllers
             _meal = meal;
         }
 
-        public IActionResult Index(int? i)
+        public IActionResult Index(int? i,string search)
         {
 
             bool val = HttpContext.User.Identity.IsAuthenticated;
+            if(search!=null)
+            {
+                
+                return View(_meal.Food_Products.Where(e=>e.Name.Contains(search)));
+            }
             if (val)
             {
                 string us = HttpContext.User.Identity.Name.ToString();
@@ -36,6 +42,7 @@ namespace MealWheel.Controllers
             return View(_meal.Food_Products.ToList());
         }
 
+        [Authorize]
         public IActionResult add_fav(int id)
         {
             Food_Products f = _meal.Food_Products.ToList().FirstOrDefault(e => e.Id == id);
@@ -75,7 +82,7 @@ namespace MealWheel.Controllers
             _meal.SaveChanges();
             return RedirectToAction(nameof(cart));
         }
-
+        [Authorize]
         public IActionResult cart()
         {
             string us = HttpContext.User.Identity.Name.ToString();
@@ -91,12 +98,14 @@ namespace MealWheel.Controllers
             return RedirectToAction(nameof(Cart));
         }
 
+        [Authorize]
         public IActionResult Fav()
         {
             string us = HttpContext.User.Identity.Name.ToString();
             var favr = _meal.favorites.Include(c => c.product).Where(p => p.uname == us).ToList();
             return View(favr);
         }
+        [Authorize]
         public IActionResult payment(int? id)
         {
             var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
@@ -119,7 +128,29 @@ namespace MealWheel.Controllers
 
         public IActionResult Success(payOptions pay)
         {
+            Billing s = new Billing();
+            s.Orderplaced = true;
+            var products = _meal.Food_Products.FirstOrDefault(p => p.Id == pay.productid);
+            s.quantity = products.quantity;
+            s.pid = pay.productid;
+            s.dateOrdered = DateTime.Now;
+            _meal.billings.Add(s);
+            _meal.SaveChanges();
+            var bill = _meal.billings.FirstOrDefault(c => c.dateOrdered == s.dateOrdered);
+            MyOrder o = new MyOrder();
+            o.bid = bill.id;
+            o.uname = HttpContext.User.Identity.Name;
+            _meal.myOrders.Add(o);
+            _meal.SaveChanges();
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Orders()
+        {
+            var username = HttpContext.User.Identity.Name;
+            var orders = _meal.myOrders.Include(e=>e.bill.product).Include(e=>e.bill).Where(e=>e.uname==username);
+            return View(orders);
         }
         public String Createorder(Food_Products products)
         {

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<MealDbContext>(options =>
     options.UseSqlServer(connectionString1));
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
