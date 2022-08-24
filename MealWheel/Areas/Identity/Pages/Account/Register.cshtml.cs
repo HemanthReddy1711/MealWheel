@@ -159,6 +159,7 @@ namespace MealWheel.Areas.Identity.Pages.Account
                 p.Lastname = Input.LastName;
                 p.Address = Input.Address.ToString();
                 p.MobileNumber = Input.MobileNumber;
+                p.email=Input.Email;
 
 
                 if (Input.profileimage != null)
@@ -168,6 +169,7 @@ namespace MealWheel.Areas.Identity.Pages.Account
                     user.profileurl = "Images/" + Input.profileimage.FileName;
                     p.profileurl = "Images/" + Input.profileimage.FileName;
                 }
+                
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -175,6 +177,8 @@ namespace MealWheel.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    _meal.myProfiles.Add(p);
+                    _meal.SaveChanges();
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
