@@ -114,6 +114,7 @@ namespace MealWheel.Models
         public string? profileurl { get; set; }
         [NotMapped]
         public IFormFile profileImage { get; set; }
+        public string email { get; set; }
     }
 
     public class Address
