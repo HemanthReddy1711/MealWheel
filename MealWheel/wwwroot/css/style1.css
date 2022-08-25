@@ -353,7 +353,7 @@ h1:after {
         font: 400 12px/41px "FontAwesome";
     }
 
-button, .btn {
+button {
     background: 0 0;
     border: none;
     display: inline-block;
@@ -447,6 +447,10 @@ button, .btn {
 }
 .helloo a:hover{
     color:#000;
+}
+.no-style a{
+    color:#000;
+    background-color:#fff;
 }
 
 

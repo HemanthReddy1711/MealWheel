@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<head>
+    <link rel="stylesheet" href="~/css/Home.css"/>
+</head>
 <div class="row">
     <div class="col-6">
         <h2 style="color:#6f42c1"> 
@@ -40,10 +42,11 @@
           </td>
          
           <td>
-       <div class="btn-group" role="group">
+       <div class="btn-group no-style" role="group">
   @*<a asp-action="Edit" asp-controller="Favorites" class="btn btn-success" asp-route-id="@item.id" > Edit  </a>*@
   <a class="btn btn-warning" asp-action="Details" asp-controller="Favorites" asp-route-id="@item.id">Details</a>
-  <a class="btn btn-danger" asp-action="Delete" asp-controller="Favorites" asp-route-id="@item.id"> Delete </a>
+  &nbsp
+  <a class="btn" asp-action="Delete" asp-controller="Favorites" asp-route-id="@item.id"> Delete </a>
 </div>
 </td>
 </tr>
