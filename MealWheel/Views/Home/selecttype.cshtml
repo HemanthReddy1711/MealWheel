@@ -1,0 +1,72 @@
+﻿@using MealWheel
+@model MealWheel.Models.Food_Products
+@{
+    ViewData["Title"] = "selecttype";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Home.css"/>
+</head>
+<div>
+    <h1>
+        Check Out
+    </h1>
+</div>
+<div class="row cart">
+    <table class="col-12"> 
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                SubTotal
+            </th>
+        </tr>
+            <tr>
+            <td>
+                <div class="cart-in">
+                    <img src="~/@Model.picurl" height="160px"/>
+                    <h5 class="text-right d-inline">@Model.Name</h5>
+                    <br/>
+                    <h5 class="text-right" style="color:#fb3531">@Model.Price/-</h5>
+                    <br/>
+                </div>
+            </td>
+            <td>
+                <input type="number" readonly="readonly" value="1" />
+            </td>
+            <td>
+                @Model.Price
+            </td>
+        </tr>
+        <tr>
+            <td>
+               
+            </td>
+            <td>
+                 <h1>
+                    Total Prize
+                </h1>
+            </td>
+            <td>
+                <h5>@Model.Price</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               
+            </td>
+            <td>
+            </td>
+            <td>
+                <a asp-action="payment" class="btn btn12" >take from restaurent</a>
+                 <a asp-action="payment" asp-route-id="@Model.Id"  class="btn btn12" >Order to Home</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+

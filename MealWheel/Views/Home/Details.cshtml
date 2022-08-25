@@ -28,7 +28,7 @@
             <h3>
                Rs.@Model.Price /-
             </h3>
-            <select asp-for="quantity">
+            <select asp-for="@Model.quantity">
                 <option>
                     1
                 </option>
@@ -41,7 +41,8 @@
             </select>
             <br />
             <input class="btn" value="Add To Cart" type="submit"/>
-            <a asp-action="payment"  asp-route-id="@Model.Id" class="btn btn12" >Buy Now</a>
+            <a asp-action="selecttype"  asp-route-id="@Model.Id" asp-route-qty="@Model.quantity" class="btn btn12" >Buy Now</a>
+            <br />
         </div>
     </div>
 </div>
