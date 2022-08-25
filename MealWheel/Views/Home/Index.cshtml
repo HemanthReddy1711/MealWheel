@@ -51,7 +51,7 @@
         </div> -->
         <br />
         <div class="row">
-          <div class="col-md-4 col-sm-12">
+          <!--<div class="col-md-4 col-sm-12">
             <div class="header1">
               <img src="~/img/icecream.jpg" alt="banner-1" class="img-responsive">
               <div class="s-desc header1-heading-small"><h2>Ice Creams &amp; Sorbets</h2>
@@ -60,12 +60,11 @@
                 <a href="#" class="button1 button1-white button1-anim">shop now</a>
               </div>
               </div>
-            </div>
-          <div class="col-md-8 col-sm-12">
-            <div class="row">
+            </div>-->
+          
              @foreach(var item in Model)
              {
-                <div class="col-md-4 col-sm-4 prof">
+                <div class="col-md-4 col-sm-4">
                     <div class="header2">
                         <div>
                       <img src="~/@item.picurl" alt="" class="img-responsive">
@@ -117,7 +116,6 @@
                      }
                  }
              </script>
-        </div>
         </div>
         </div>
 </body>
