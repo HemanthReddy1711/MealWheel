@@ -1,23 +1,21 @@
 ﻿@using MealWheel
-@model MealWheel.Models.favorite
+@model MealWheel.Models.Cart
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
-
 <div class="row">
     <h2 style="color:mediumpurple">
-        Delete Category
+        Cart Details
     </h2>
-    <form asp-action="Delete" method="post" enctype="multipart/form-data">
+    <form asp-action="Details" method="post" enctype="multipart/form-data">
     <div class="p-4 rounded border row">
         <div asp-validation-summary="ModelOnly" class="text-danger">
 
         </div>
-        <div class="col-8">
-             <div class="form-group row">
+            <div class="col-8">
+            <div class="form-group row">
             <div class="col-6">
-                <input asp-for="pid" type="hidden" hidden />
-                <label asp-for="product.Name"></label>
+              <label asp-for="product.Name"></label>
             </div>
             <div class="col-6">
                 <input asp-for="product.Name" readonly="readonly" class="form-control" id="validationCustom05" required/>
@@ -36,20 +34,33 @@
             </div>
             <div class="form-group row">
             <span asp-validation-for="uname" class="text-danger"></span>
-           
+            <br />
+            <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="totalPrice"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="totalPrice" readonly="readonly" class="form-control" id="validationCustom05" required/>
+            </div>
+            </div>
+            <div class="form-group row">
+            <span asp-validation-for="totalPrice" class="text-danger"></span>
+             <br />
+            
+            
         </div>
         <div class="form-group">
-            <input class="btn btn-danger" value="Delete" type="submit"/>
             <a asp-action="Index" class="btn btn-success"> Back to List</a>
         </div>
         </div>
          <div class="col-1">
 
         </div>
-         
+        
 
        
     </div>
+    </div>
+    </div>
 </form>
 </div>
-
