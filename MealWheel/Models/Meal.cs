@@ -99,8 +99,10 @@ namespace MealWheel.Models
         public int pid { get; set; }
 
         public Food_Products product { get; set; }
-        public int totalPrice { get; set; }
+        [DisplayName("Total Price")]
 
+        public int totalPrice { get; set; }
+        [DisplayName("User Name")]
         public string uname { get; set; }
     }
 
