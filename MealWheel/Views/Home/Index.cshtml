@@ -72,13 +72,13 @@
                                   @if(@item.fav ==false)
                                       {
                                           <div class="s-desca header1-heading-small">
-                                         <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:white" onclick="Changeheart()"> <i class="fa-solid fa-heart"></i>
+                                         <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:white"> <i class="fa-solid fa-heart"></i>
                                             </a></div>
                                       }
                                    @if(item.fav==true)
                                 {
                                     <div class="s-desca header1-heading-small">
-                                    <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:red" onclick="Changeheart()"> <i class="fa-solid fa-heart"></i>
+                                    <a asp-action="add_fav" asp-route-id="@item.Id" id="cohe" style="color:red"> <i class="fa-solid fa-heart"></i>
                                     </a></div>
                                 }
 
@@ -115,7 +115,6 @@
                      }
                  }
              </script>
-        </div>
         </div>
         </div>
         </div>

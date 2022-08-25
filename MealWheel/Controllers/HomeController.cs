@@ -26,33 +26,69 @@ namespace MealWheel.Controllers
 
         public IActionResult Index(int? i,string search)
         {
-
+            
             bool val = HttpContext.User.Identity.IsAuthenticated;
-            if(search!=null)
+           
+            if (search!=null)
             {
+                List<Food_Products> d = _meal.Food_Products.Where(e => e.Name.Contains(search)).ToList();
                 if (val)
                 {
                     string us = HttpContext.User.Identity.Name.ToString();
+                    List<int> ids = _meal.favorites.Where(e => e.uname == us).Select(e => e.pid).ToList();
                     string co = _meal.carts.Where(e => e.uname == us).Count().ToString();
+                    List<Food_Products> x = _meal.Food_Products.Where(e => e.Name.Contains(search)).ToList();
                     ViewData["hello"] = co;
-                    List<int> id = _meal.favorites.Where(e => e.uname == us).Select(e => e.pid).ToList();
-                    List<Food_Products> p = _meal.Food_Products.Where(e => e.Name.Contains(search)).ToList();
-                    foreach(Food_Products f in p)
+                    //List<Food_Products> p1 = _meal.Food_Products.Where(e => e.Name.Contains(search)).Where(e=>id.Any())).ToList();
+                    foreach(Food_Products food in x)
                     {
-                        
+                        food.fav = false;
+                        foreach(int a in ids)
+                        {
+                            if(food.Id==a)
+                            {
+                                food.fav = true;
+                                break;
+                            }
+                        }
                     }
+                    
+                    return View(x);
                 }
-                return View(_meal.Food_Products.Where(e=>e.Name.Contains(search)));
+                foreach(Food_Products food in d)
+                {
+                    food.fav=false;
+                }
+
+                return View(d);
             }
             if (val)
             {
                 string us = HttpContext.User.Identity.Name.ToString();
-
                 string co = _meal.carts.Where(e=>e.uname==us).Count().ToString();
+                List<int> ids = _meal.favorites.Where(e => e.uname == us).Select(e => e.pid).ToList();
+                List<Food_Products> r = _meal.Food_Products.ToList();
+                foreach (Food_Products food in r)
+                {
+                    food.fav = false;
+                    foreach (int a in ids)
+                    {
+                        if (food.Id == a)
+                        {
+                            food.fav = true;
+                            break;
+                        }
+                    }
+                }
                 ViewData["hello"] = co;
+                return View(r);
             }
-            
-            return View(_meal.Food_Products.ToList());
+            List<Food_Products> p = _meal.Food_Products.ToList();
+            foreach (Food_Products food in p)
+            {
+                food.fav = false;
+            }
+            return View(p);
         }
 
         [Authorize]
