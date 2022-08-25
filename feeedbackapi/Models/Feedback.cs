@@ -11,6 +11,6 @@ namespace feeedbackapi.Models
         public string Review { get; set; } = null!;
         public int Rating { get; set; }
 
-        public virtual FoodProduct PidNavigation { get; set; } = null!;
+        //public virtual FoodProduct PidNavigation { get; set; } = null!;
     }
 }

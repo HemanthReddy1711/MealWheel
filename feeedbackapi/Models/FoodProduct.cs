@@ -10,7 +10,7 @@ namespace feeedbackapi.Models
             Billings = new HashSet<Billing>();
             Carts = new HashSet<Cart>();
             Favorites = new HashSet<Favorite>();
-            Feedbacks = new HashSet<Feedback>();
+            //Feedbacks = new HashSet<Feedback>();
         }
 
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace feeedbackapi.Models
         public virtual ICollection<Billing> Billings { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        //public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }

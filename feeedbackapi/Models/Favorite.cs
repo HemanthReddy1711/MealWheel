@@ -9,6 +9,6 @@ namespace feeedbackapi.Models
         public int Pid { get; set; }
         public string Uname { get; set; } = null!;
 
-        public virtual FoodProduct PidNavigation { get; set; } = null!;
+        //public virtual FoodProduct? PidNavigation { get; set; } = null;
     }
 }

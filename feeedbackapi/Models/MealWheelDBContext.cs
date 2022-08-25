@@ -230,9 +230,9 @@ namespace feeedbackapi.Models
                     .HasColumnName("uname")
                     .HasDefaultValueSql("(N'')");
 
-                entity.HasOne(d => d.PidNavigation)
-                    .WithMany(p => p.Favorites)
-                    .HasForeignKey(d => d.Pid);
+                //entity.HasOne(d => d.PidNavigation)
+                //    .WithMany(p => p.Favorites)
+                //    .HasForeignKey(d => d.Pid);
             });
 
             modelBuilder.Entity<Feedback>(entity =>
@@ -251,9 +251,9 @@ namespace feeedbackapi.Models
 
                 entity.Property(e => e.Uname).HasColumnName("uname");
 
-                entity.HasOne(d => d.PidNavigation)
-                    .WithMany(p => p.Feedbacks)
-                    .HasForeignKey(d => d.Pid);
+                //entity.HasOne(d => d.PidNavigation)
+                //    .WithMany(p => p.Feedbacks)
+                //    .HasForeignKey(d => d.Pid);
             });
 
             modelBuilder.Entity<FoodProduct>(entity =>
