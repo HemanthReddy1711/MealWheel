@@ -23,9 +23,8 @@
         @foreach(var item in Model)
              {
                     <div class="card" style="width: 18rem;background-color:pink">
-                      <img src="~/Images/dis.jpg" class="card-img-top" alt="Avatar" style="width:100%;>
+                      <img src="~/Images/dis.jpg" class="card-img-top" alt="Avatar" style="width:100%" />
                       <div class="card-body">
-                      
                           <a asp-action="Details" asp-route-id="@item.id">
                         <h4 class="card-title">
                           @item.name
@@ -37,8 +36,8 @@
                        
                          <a href="#" class="btn btn-primary">Apply</a>
                       </div>
-                         
                      <br />
+                     </div>
              }
         </div>
         </div>
