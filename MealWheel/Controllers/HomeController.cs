@@ -175,6 +175,37 @@ namespace MealWheel.Controllers
 
         }
 
+        //public IActionResult gotoaddress(int id)
+        //{
+        //    var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
+        //    var unam = HttpContext.User.Identity.Name;
+        //    Address user = _meal.addresses.FirstOrDefault(e => e.uname == unam);
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction(nameof(createAddress));
+        //    }
+        //    if (user != null)
+        //    {
+                
+        //    }
+        //    //ViewData["hello"] = products.Id;
+        //    return View(user);
+        //}
+        //public IActionResult createAddress()
+        //{
+        //    return View();
+        //}
+        public IActionResult selecttype(int id,int qty)
+        {
+            var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
+            products.Price = qty * products.Price;
+            return View(products);
+        }
+
+        public IActionResult Failure()
+        {
+            return View();
+        }
         public IActionResult Success(payOptions pay)
         {
             Billing s = new Billing();
