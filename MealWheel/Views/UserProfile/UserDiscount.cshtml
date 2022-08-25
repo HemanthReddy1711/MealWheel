@@ -1,0 +1,46 @@
+﻿@using MealWheel
+@model IEnumerable<MealWheel.Models.discount>
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/Style2.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="col-md-8 col-sm-12">
+    <div class="row">
+        @foreach(var item in Model)
+             {
+                    <div class="card" style="width: 18rem;background-color:pink">
+                      <img src="~/Images/dis.jpg" class="card-img-top" alt="Avatar" style="width:100%;>
+                      <div class="card-body">
+                      
+                          <a asp-action="Details" asp-route-id="@item.id">
+                        <h4 class="card-title">
+                          @item.name
+                        </h4>
+                        </a>
+                        <p class="card-text" >
+                         <b> @item.description</b>
+                        </p>
+                       
+                         <a href="#" class="btn btn-primary">Apply</a>
+                      </div>
+                         
+                     <br />
+             }
+        </div>
+        </div>
+</body>
+</html>
