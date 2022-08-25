@@ -33,6 +33,8 @@ namespace MealWheel.Models
         public IFormFile pic { get; set; }
 
         public string picurl { get; set; }
+
+        public bool fav { get; set; }
     }
 
     public class feedback
@@ -53,6 +55,8 @@ namespace MealWheel.Models
         public int pid { get; set; }
 
         public Food_Products product { get; set; }
+
+        public string uname { get; set; }
 
     }
 
@@ -84,6 +88,8 @@ namespace MealWheel.Models
         public int bid { get; set; }
         public Billing bill { get; set; }
 
+        public string uname { get; set; }
+
     }
 
     public class Cart
@@ -94,6 +100,8 @@ namespace MealWheel.Models
 
         public Food_Products product { get; set; }
         public int totalPrice { get; set; }
+
+        public string uname { get; set; }
     }
 
     public class MyProfile
@@ -106,6 +114,7 @@ namespace MealWheel.Models
         public string? profileurl { get; set; }
         [NotMapped]
         public IFormFile profileImage { get; set; }
+        public string email { get; set; }
     }
 
     public class Address
@@ -113,6 +122,8 @@ namespace MealWheel.Models
         public int id { get; set; }
         public string Door_no { get; set; }
         public string  Area { get; set; }
+
+        public string uname { get; set; }
 
         public string Landmark { get; set; }
         public string FullAddress { get; set; }

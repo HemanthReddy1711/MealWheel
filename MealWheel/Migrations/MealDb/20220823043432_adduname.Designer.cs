@@ -4,6 +4,7 @@ using MealWheel.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MealWheel.Migrations.MealDb
 {
     [DbContext(typeof(MealDbContext))]
-    partial class MealDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220823043432_adduname")]
+    partial class adduname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,9 +227,6 @@ namespace MealWheel.Migrations.MealDb
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("fav")
-                        .HasColumnType("bit");
-
                     b.Property<string>("picurl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -288,10 +287,6 @@ namespace MealWheel.Migrations.MealDb
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MobileNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

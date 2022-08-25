@@ -1,0 +1,57 @@
+﻿@using MealWheel
+@model IEnumerable<MealWheel.Models.discount>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2 style="color:#6f42c1"> 
+            Discounts Available
+        </h2>
+    </div>
+     <div class="col-6 text-end">
+        <a asp-action="Create" class="btn" style="background-color:#6f42c1;color:white"> &nbsp; Add an Offer</a>
+    </div>
+
+    <br />
+    <br />
+    <div class="col-lg-12 col-md-6">
+      <table class=" container table table-striped">
+      <tr>
+        <th>
+            @Html.DisplayNameFor(c => c.id)
+        </th>
+         <th>
+            @Html.DisplayNameFor(c => c.name)
+        </th>
+         <th>
+            @Html.DisplayNameFor(c => c.description)
+        </th>
+        <th></th>
+      </tr>
+      @foreach(var item in Model)
+      {
+      <tr>
+          <td>
+              @item.id
+          </td>
+          <td>
+              @item.name
+          </td>
+          <td>
+              @item.description
+          </td>
+          <td>
+       <div class="btn-group" role="group">
+  <a asp-action="Edit" asp-controller="Discount" class="btn btn-success" asp-route-id="@item.id" > Edit  </a>
+  <a class="btn btn-warning" asp-action="Details" asp-controller="Discount" asp-route-id="@item.id">Details</a>
+  <a class="btn btn-danger" asp-action="Delete" asp-controller="Discount" asp-route-id="@item.id"> Delete </a>
+</div>
+</td>
+</tr>
+      }
+      </table>
+      </div>
+    </div>
+

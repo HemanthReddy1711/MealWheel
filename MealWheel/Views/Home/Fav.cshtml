@@ -1,0 +1,45 @@
+﻿@using MealWheel
+@model IEnumerable<MealWheel.Models.favorite>
+@{
+    ViewData["Title"] = "Fav";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Home.css"/>
+</head>
+<div>
+    <h1>
+        My Favorites
+    </h1>
+</div>
+<div class="row cart">
+    <table class="col-12"> 
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                SubTotal
+            </th>
+        </tr>
+        @foreach(var p in Model)
+        {
+            <tr>
+            <td>
+                <div class="cart-in">
+                    <img src="~/@p.product.picurl" height="160px"/>
+                    <h5 class="text-right d-inline">@p.product.Name</h5>
+                    <br/>
+                    <br/>
+                    <a class="btn" asp-action="Remove_Fav" asp-route-id="@p.id">Remove Item From favorites</a>
+
+                </div>
+            </td>
+            <td>
+                <h5 class="text-right" style="color:#fb3531">@p.product.Price/-</h5>
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
