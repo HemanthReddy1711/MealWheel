@@ -41,5 +41,51 @@ namespace feeedbackapi.Controllers
                 return product;
             }
 
+        //POST: api/Feedback
+        [HttpPost]
+        public async Task<ActionResult<Feedback>> AddFeedbacks(Feedback feed)
+        {
+            _context.Feedbacks.Add(feed);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetFeedback", new { id = feed.Id}, feed);
         }
+
+
+        //PUT: api/Products/2
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateFeedback(int id, Feedback )
+        {
+            if (id != product.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(product).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductsExist(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        private bool ProductsExist(int id)
+        {
+            return _context.Feedbacks.Any(e => e.Id == id);
+        }
+
+
     }
+}
