@@ -13,10 +13,11 @@
         <div asp-validation-summary="ModelOnly" class="text-danger">
 
         </div>
+                        <input asp-for="pid" type="hidden" hidden />
+
         <div class="col-8">
              <div class="form-group row">
             <div class="col-6">
-                <input asp-for="pid" type="hidden" hidden />
                 <label asp-for="product.Name"></label>
             </div>
             <div class="col-6">
@@ -36,7 +37,8 @@
             </div>
             <div class="form-group row">
             <span asp-validation-for="uname" class="text-danger"></span>
-
+            </div>
+            <br />
             <div class="form-group row">
             <div class="col-6">
                 <label asp-for="totalPrice"></label>
@@ -48,18 +50,16 @@
             <div class="form-group row">
             <span asp-validation-for="totalPrice" class="text-danger"></span>
            
-        </div>
+            </div>
         <div class="form-group">
             <input class="btn btn-danger" value="Delete" type="submit"/>
             <a asp-action="Index" class="btn btn-success"> Back to List</a>
         </div>
-        </div>
          <div class="col-1">
 
         </div>
-         
-
-       
+    </div>
+    </div>
     </div>
 </form>
 </div>
