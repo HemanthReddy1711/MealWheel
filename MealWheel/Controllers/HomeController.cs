@@ -139,6 +139,7 @@ namespace MealWheel.Controllers
             ViewData["hello"] = _meal.carts.Where(p => p.uname == us).Sum(c => c.totalPrice).ToString();
             return View(cati);
         }
+        [Authorize]
         public IActionResult Remove_cart(int? id)
         {
             var cartss = _meal.carts.FirstOrDefault(c => c.id == id);

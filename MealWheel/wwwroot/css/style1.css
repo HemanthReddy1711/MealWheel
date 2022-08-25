@@ -10,7 +10,7 @@ body {
 }
 
 .header1 {
-    height: 95vh;
+    height: 150px;
     border-radius: 20px;
     position: relative;
     margin-bottom: 20px;
@@ -22,7 +22,7 @@ body {
     .header1 .img-responsive {
         width: 100%;
         display: block;
-        height: 95vh;
+        height: 150px;
         border-radius: 20px;
         opacity: 0.4;
     }
@@ -451,6 +451,9 @@ button {
 .no-style a{
     color:#000;
     background-color:#fff;
+}
+.navbar-nav{
+    margin-left:40px;
 }
 
 

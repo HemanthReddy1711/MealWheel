@@ -1,10 +1,12 @@
 ﻿using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace MealWheel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class FavoritesController : Controller
     {
         public MealDbContext MealDbContext;

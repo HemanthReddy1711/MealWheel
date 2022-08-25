@@ -1,9 +1,11 @@
 ﻿using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace MealWheel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AddressesController : Controller
     {
         public MealDbContext mealDbContext;
