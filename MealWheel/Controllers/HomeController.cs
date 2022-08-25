@@ -92,10 +92,10 @@ namespace MealWheel.Controllers
         }
 
         [Authorize]
-        public IActionResult add_fav(int id)
+        public IActionResult add_fav(int id,bool fav)
         {
             Food_Products f = _meal.Food_Products.ToList().FirstOrDefault(e => e.Id == id);
-            if(f.fav==true)
+            if(fav==true)
             {
                 favorite fa = _meal.favorites.ToList().FirstOrDefault(e => e.pid == f.Id);
                 _meal.favorites.Remove(fa);
