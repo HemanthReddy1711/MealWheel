@@ -13,10 +13,10 @@
 
         </div>
             <div class="col-8">
-                <div class="form-group row">
-                    <div class="col-6">
-                        <label asp-for="product.Name"></label>
-                    </div>
+            <div class="form-group row">
+            <div class="col-6">
+              <label asp-for="product.Name"></label>
+            </div>
             <div class="col-6">
                 <input asp-for="product.Name" readonly="readonly" class="form-control" id="validationCustom05" required/>
             </div>
@@ -50,7 +50,6 @@
             
         </div>
         <div class="form-group">
-            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.id"> Edit </a>
             <a asp-action="Index" class="btn btn-success"> Back to List</a>
         </div>
         </div>
@@ -60,6 +59,8 @@
         
 
        
+    </div>
+    </div>
     </div>
 </form>
 </div>
