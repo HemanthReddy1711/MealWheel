@@ -155,6 +155,13 @@ namespace MealWheel.Controllers
             var favr = _meal.favorites.Include(c => c.product).Where(p => p.uname == us).ToList();
             return View(favr);
         }
+        public IActionResult Remove_Fav(int id)
+        {
+            favorite f = _meal.favorites.Where(e => e.id == id).FirstOrDefault();
+            _meal.favorites.Remove(f);
+            _meal.SaveChanges();
+            return RedirectToAction(nameof(Fav));
+        }
         [Authorize]
         public IActionResult payment(int? id)
         {
