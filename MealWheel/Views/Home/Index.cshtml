@@ -14,11 +14,11 @@
 
 <body>
     <br>
-     <div class="row">
+     <!--<div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="header1">
             <img src="~/img/icecream.jpg" alt="banner-1" class="img-responsive">
-            <div class="s-desc header1-heading-small"><h2>Ice Creams &amp; Sorbets</h2>
+            <div class="s-desc header1-heading-small"><h2>Ice Cream &amp; Sorbets</h2>
               <h4><span>NEW!</span> MISS GLA'GLA SORBET ISPAHAN</h4>
               <p>ROSE, LITCHI &amp; RASPBERRY - $6.90</p>
               <br />
@@ -48,10 +48,10 @@
                     </div>
                     </div>
         </div>
-        </div>
+        </div> -->
         <br />
         <div class="row">
-          <div class="col-md-4 col-sm-12">
+          <!--<div class="col-md-4 col-sm-12">
             <div class="header1">
               <img src="~/img/icecream.jpg" alt="banner-1" class="img-responsive">
               <div class="s-desc header1-heading-small"><h2>Ice Creams &amp; Sorbets</h2>
@@ -60,13 +60,13 @@
                 <a href="#" class="button1 button1-white button1-anim">shop now</a>
               </div>
               </div>
-            </div>
-          <div class="col-md-8 col-sm-12">
-            <div class="row">
+            </div>-->
+          
              @foreach(var item in Model)
              {
-                <div class="col-md-4 col-sm-4 prof">
+                <div class="col-md-4 col-sm-4">
                     <div class="header2">
+                        <div>
                       <img src="~/@item.picurl" alt="" class="img-responsive">
 
                                   @if(@item.fav ==false)
@@ -91,6 +91,9 @@
                         <p>
                           @item.description
                         </p>
+                        <h5>
+                            Average rating:@item.rating
+                          </h5>
                         <div class="nav2">
                           <h6>
                             Rs.@item.Price
@@ -98,6 +101,7 @@
                           <a href="#">
                               <i class="fa fa-cart-plus"></i>
                           </a>
+                      </div>
                       </div>
                       </div>
                       </div>
@@ -115,7 +119,6 @@
                      }
                  }
              </script>
-        </div>
         </div>
         </div>
 </body>

@@ -1,8 +1,10 @@
 ﻿using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MealWheel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DiscountController : Controller
     {
         public MealDbContext MealDbContext;

@@ -28,7 +28,10 @@
                 date purchased
             </th>
             <th>
-                date purchased
+                Order Placed
+            </th>
+            <th>
+                feedback
             </th>
         </tr>
         @foreach(var p in Model)
@@ -63,6 +66,9 @@
                         Oredred
                     </td>
                 }
+                <td>
+                    <a asp-action="feedback" asp-route-id="@p.bid" class="btn btn-primary">feedback</a>
+                </td>
             </tr>
         }
     </table>

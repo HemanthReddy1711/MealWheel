@@ -1,4 +1,5 @@
 ﻿using MealWheel.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace MealWheel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class FoodsController : Controller
     {
         public MealDbContext mealDbContext;
