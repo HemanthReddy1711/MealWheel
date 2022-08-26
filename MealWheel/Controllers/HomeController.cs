@@ -254,6 +254,47 @@ namespace MealWheel.Controllers
             }
         }
 
+        public IActionResult feedback(int id)
+        {
+            Billing b = _meal.billings.Include(e=>e.product).FirstOrDefault(e => e.id == id);
+            string unam = HttpContext.User.Identity.Name;
+            feedback f = _meal.feedbacks.Where(e => e.uname == unam).Where(e => e.pid == b.pid).Include(e=>e.product).FirstOrDefault();
+            if(f==null)
+            {
+                feedback f1 = new feedback();
+                f1.uname = unam;
+                f1.pid = b.pid;
+                f1.rating = 0;
+                f1.review = "";
+                _meal.feedbacks.Add(f1);
+                _meal.SaveChanges();
+                return View(f1);
+            }
+            return View(f);
+        }
+
+        [HttpPost]
+        public IActionResult feedback(feedback feedback)
+        {
+            feedback f1 = new feedback();
+            f1.id = feedback.id;
+            f1.uname = feedback.uname;
+            f1.pid = feedback.pid;
+            f1.review=feedback.review;
+            f1.rating = feedback.rating;
+            _meal.feedbacks.Update(f1);
+            _meal.SaveChanges();
+            int total_rat = _meal.feedbacks.Where(e => e.pid == f1.pid).Sum(e => e.rating);
+            int total_user = _meal.feedbacks.Where(e => e.pid == f1.pid).Count();
+            int total_rating = (int)Math.Round((float)(total_rat / total_user));
+            Food_Products f2 = _meal.Food_Products.FirstOrDefault(e => e.Id == f1.pid);
+            f2.rating = total_rating;
+            _meal.Food_Products.Update(f2);
+            _meal.SaveChanges();
+            return View(f1);
+
+        }
+
         public IActionResult Privacy()
         {
             return View();
