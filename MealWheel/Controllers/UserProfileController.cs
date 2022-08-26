@@ -2,6 +2,7 @@
 using MealWheel.Models;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using MealWheel.Areas.Identity.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MealWheel.Controllers
 {
@@ -39,5 +40,13 @@ namespace MealWheel.Controllers
             _meal.SaveChanges();
             return View(myProfile);
         }
+        
+
+        public IActionResult UserDiscount(int? id)
+        {
+            return View(_meal.discounts.ToList());
+        }
+
+
     }
 }

@@ -1,0 +1,51 @@
+﻿@using MealWheel
+@model MealWheel.Models.feedback
+@{
+    ViewData["Title"] = "feedback";
+}
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="col-md-4 container bg-default">
+			
+			<h4 class="my-4">
+					feedback
+			</h4>
+			
+				<form asp-action="feedback" method="post">
+					<input asp-for="id" type="hidden" hidden />
+					<input asp-for="pid" type="hidden" hidden />
+				<div class="form-row">
+					<div class="col-md-6 form-group">
+						<label for="firstname">userName</label>
+						<input type="text" asp-for="uname" class="form-control">
+					</div>
+
+					<div class="col-md-6 form-group">
+						<label for="lastname">Product Name</label>
+						<input type="text" asp-for="product.Name" class="form-control">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="adress">give rating</label>
+					<input type="number" max="5" min="1" asp-for="rating" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="address2">Enter the review
+					</label>
+					<textarea type="text" asp-for="review" class="form-control"></textarea>
+				</div>
+				<hr>
+					<hr class="mb-4">
+				
+					<button class="btn btn-primary bt-lg btn-block" type="submit">Continue</button>
+					</form>
+			
+		</div>
+		
+  </body>
+</html>
+

@@ -139,6 +139,7 @@ namespace MealWheel.Controllers
             ViewData["hello"] = _meal.carts.Where(p => p.uname == us).Sum(c => c.totalPrice).ToString();
             return View(cati);
         }
+        [Authorize]
         public IActionResult Remove_cart(int? id)
         {
             var cartss = _meal.carts.FirstOrDefault(c => c.id == id);
@@ -153,6 +154,13 @@ namespace MealWheel.Controllers
             string us = HttpContext.User.Identity.Name.ToString();
             var favr = _meal.favorites.Include(c => c.product).Where(p => p.uname == us).ToList();
             return View(favr);
+        }
+        public IActionResult Remove_Fav(int id)
+        {
+            favorite f = _meal.favorites.Where(e => e.id == id).FirstOrDefault();
+            _meal.favorites.Remove(f);
+            _meal.SaveChanges();
+            return RedirectToAction(nameof(Fav));
         }
         [Authorize]
         public IActionResult payment(int? id)
@@ -175,6 +183,37 @@ namespace MealWheel.Controllers
 
         }
 
+        //public IActionResult gotoaddress(int id)
+        //{
+        //    var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
+        //    var unam = HttpContext.User.Identity.Name;
+        //    Address user = _meal.addresses.FirstOrDefault(e => e.uname == unam);
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction(nameof(createAddress));
+        //    }
+        //    if (user != null)
+        //    {
+                
+        //    }
+        //    //ViewData["hello"] = products.Id;
+        //    return View(user);
+        //}
+        //public IActionResult createAddress()
+        //{
+        //    return View();
+        //}
+        public IActionResult selecttype(int id,int qty)
+        {
+            var products = _meal.Food_Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
+            products.Price = qty * products.Price;
+            return View(products);
+        }
+
+        public IActionResult Failure()
+        {
+            return View();
+        }
         public IActionResult Success(payOptions pay)
         {
             Billing s = new Billing();
@@ -220,6 +259,47 @@ namespace MealWheel.Controllers
             {
                 return null;
             }
+        }
+
+        public IActionResult feedback(int id)
+        {
+            Billing b = _meal.billings.Include(e=>e.product).FirstOrDefault(e => e.id == id);
+            string unam = HttpContext.User.Identity.Name;
+            feedback f = _meal.feedbacks.Where(e => e.uname == unam).Where(e => e.pid == b.pid).Include(e=>e.product).FirstOrDefault();
+            if(f==null)
+            {
+                feedback f1 = new feedback();
+                f1.uname = unam;
+                f1.pid = b.pid;
+                f1.rating = 0;
+                f1.review = "";
+                _meal.feedbacks.Add(f1);
+                _meal.SaveChanges();
+                return View(f1);
+            }
+            return View(f);
+        }
+
+        [HttpPost]
+        public IActionResult feedback(feedback feedback)
+        {
+            feedback f1 = new feedback();
+            f1.id = feedback.id;
+            f1.uname = feedback.uname;
+            f1.pid = feedback.pid;
+            f1.review=feedback.review;
+            f1.rating = feedback.rating;
+            _meal.feedbacks.Update(f1);
+            _meal.SaveChanges();
+            int total_rat = _meal.feedbacks.Where(e => e.pid == f1.pid).Sum(e => e.rating);
+            int total_user = _meal.feedbacks.Where(e => e.pid == f1.pid).Count();
+            int total_rating = (int)Math.Round((float)(total_rat / total_user));
+            Food_Products f2 = _meal.Food_Products.FirstOrDefault(e => e.Id == f1.pid);
+            f2.rating = total_rating;
+            _meal.Food_Products.Update(f2);
+            _meal.SaveChanges();
+            return View(f1);
+
         }
 
         public IActionResult Privacy()

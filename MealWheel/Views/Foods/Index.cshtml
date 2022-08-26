@@ -4,6 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/Home.css"/>
+</head>
 <div class="row">
     <div class="col-6">
         <h2 style="color:#6f42c1"> 
@@ -73,7 +76,7 @@
               @item.quantity
           </td>
           <td>
-       <div class="btn-group" role="group">
+       <div class="btn-group no-style" role="group">
   <a asp-action="Edit" asp-controller="Foods" class="btn btn-success" asp-route-id="@item.Id" > Edit  </a>
   <a class="btn btn-warning" asp-action="Details" asp-controller="Foods" asp-route-id="@item.Id">Details</a>
   <a class="btn btn-danger" asp-action="Delete" asp-controller="Foods" asp-route-id="@item.Id"> Delete </a>

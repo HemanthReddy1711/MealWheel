@@ -18,8 +18,4 @@
     <PackageReference Include="Razorpay" Version="3.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Images\" />
-  </ItemGroup>
-
 </Project>

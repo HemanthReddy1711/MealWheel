@@ -3,6 +3,27 @@
 @{
     ViewData["Title"] = "Index";
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        getFeedback()
+    });
+function.getFeedback(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:5145/api/feedback",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: ""
+    });
+}
+
+
+
+</script>
+
 
 <div class="row">
     <div class="col-6">
